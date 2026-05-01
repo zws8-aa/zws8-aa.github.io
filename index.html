@@ -276,7 +276,7 @@
             line-height: 1.4;
         }
 
-        /* 新增全球美食特色板块样式 */
+        /* 美食板块样式 */
         .global-food-card {
             background: linear-gradient(115deg, #fffaf3 0%, #ffffff 100%);
             border-radius: 28px;
@@ -363,6 +363,7 @@
             color: #7c8ba0;
         }
 
+        /* 联系板块改进：增加复制按钮，电话/邮箱/map链接 */
         .contact-info {
             display: flex;
             flex-direction: column;
@@ -373,6 +374,7 @@
             align-items: center;
             gap: 16px;
             font-size: 1rem;
+            flex-wrap: wrap;
         }
         .contact-icon {
             width: 48px;
@@ -384,6 +386,7 @@
             justify-content: center;
             font-size: 1.5rem;
             color: #d4af7a;
+            flex-shrink: 0;
         }
         .contact-text {
             flex: 1;
@@ -396,6 +399,51 @@
             font-size: 0.8rem;
             color: #7b8ba3;
         }
+        /* 复制按钮样式 */
+        .copy-btn {
+            background: #eef2f8;
+            border: none;
+            border-radius: 40px;
+            padding: 6px 16px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #2c3e4e;
+            margin-left: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .copy-btn:active {
+            background: #d4af7a;
+            color: white;
+        }
+        /* 可点击链接样式 */
+        .clickable-link {
+            text-decoration: none;
+            color: #1f2c3e;
+            font-weight: 500;
+            display: inline-block;
+        }
+        .clickable-link:active {
+            opacity: 0.7;
+        }
+        .map-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #eef2f6;
+            padding: 8px 16px;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #2c3e4e;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .map-link:active {
+            background: #d4af7a;
+            color: white;
+        }
+
         .wx-qrcode {
             text-align: center;
             margin-top: 12px;
@@ -416,17 +464,7 @@
         }
         .map-placeholder {
             margin-top: 16px;
-            background: #eef2f6;
-            border-radius: 24px;
-            padding: 16px;
             text-align: center;
-            font-size: 0.8rem;
-            color: #5a6e8a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            border: 1px solid #e2eaf2;
         }
 
         .official-url-card {
@@ -529,6 +567,7 @@
             .cases-grid { gap: 14px; }
             .advantages-grid { gap: 12px; }
             .official-url-card { flex-direction: column; align-items: flex-start; }
+            .contact-row { flex-wrap: wrap; }
         }
         #contact, #about, #services, #cases, #home, #globalFood { scroll-margin-top: 10px; }
     </style>
@@ -665,7 +704,7 @@
         </div>
     </section>
 
-    <!-- ========= 新增：正宗沙县 · 全球共享 板块（完整文案） ========= -->
+    <!-- 正宗沙县 · 全球共享 板块 -->
     <section id="globalFood">
         <div class="global-food-card section-card">
             <div class="food-highlight">
@@ -682,16 +721,16 @@
                     <span class="food-badge">🧾 正规食品经营许可</span>
                 </div>
                 <div class="food-desc">
-                    面向全球市场，<strong>，跨境可寄</strong>，助力地方特色美食走向世界。无论是海外商超、华人社区，还是个人零售，我们都可提供稳定供货与专业跨境食品出口服务。
+                    面向全球市场，<strong>一件代发，跨境可寄</strong>，助力地方特色美食走向世界。无论是海外商超、华人社区，还是个人零售，我们都可提供稳定供货与专业跨境食品出口服务。
                 </div>
                 <div class="food-action">
-                    💬 微信咨询 zws66669 ｜ 获取全球供货报价
+                    💬 微信咨询 zws6669 ｜ 获取全球供货报价
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 产品案例（保留原有 OSS 图片） -->
+    <!-- 产品案例 -->
     <section id="cases">
         <div class="section-card">
             <h2 class="section-title">产品案例</h2>
@@ -703,7 +742,6 @@
                         <p>会员+外卖+积分，日活提高45%</p>
                     </div>
                 </div>
-                <!-- AI数据标注图片：3.jpg（OSS） -->
                 <div class="case-item">
                     <img src="https://zws8-website-images.oss-cn-hongkong.aliyuncs.com/3.jpg" alt="AI数据标注项目成果">
                     <div class="case-info">
@@ -718,7 +756,6 @@
                         <p>生产进销存一体化，降本30%</p>
                     </div>
                 </div>
-                <!-- 拌面图片：2.jpg（OSS） 突出美食案例 -->
                 <div class="case-item">
                     <img src="https://zws8-website-images.oss-cn-hongkong.aliyuncs.com/2.jpg" alt="沙县拌面全球供货案例">
                     <div class="case-info">
@@ -730,7 +767,7 @@
         </div>
     </section>
 
-    <!-- 联系地址 + 官网链接 + 微信二维码（1.jpg） -->
+    <!-- 联系地址板块（改进：可复制微信号、可拨打电话、可发送邮件、可跳转地图） -->
     <section id="contact">
         <div class="section-card">
             <h2 class="section-title">联系地址</h2>
@@ -739,47 +776,66 @@
                     <div class="url-label">
                         <span>🌐</span> 官方网站
                     </div>
-                    <a href="https://www.caishengservice.com" target="_blank" rel="noopener noreferrer" class="url-link">
-                        www.zws8.com
+                    <a href="https://zws8.com" target="_blank" rel="noopener noreferrer" class="url-link">
+                       https: zws8.com
                     </a>
                     <div style="font-size:0.7rem; color:#b87333; margin-left: auto;">点击直接访问 →</div>
                 </div>
                 
+                <!-- 地址：可点击打开地图导航 -->
                 <div class="contact-row">
                     <div class="contact-icon">📍</div>
                     <div class="contact-text">
-                        福建省三明市沙县区凤岗镇西霞村110号<br>
-                        <span class="contact-note">(来访请提前预约)</span>
+                        <a href="https://uri.amap.com/marker?position=117.826,26.396&name=财盛生活服务科技" 
+                           target="_blank" 
+                           class="map-link" 
+                           rel="noopener noreferrer">
+                           🗺️ 福建省三明市沙县区凤岗镇西霞村110号
+                        </a>
+                        <span class="contact-note">(点击地址直接导航)</span>
                     </div>
                 </div>
+
+                <!-- 电话：tel:链接，直接拨打 -->
                 <div class="contact-row">
                     <div class="contact-icon">📞</div>
                     <div class="contact-text">
-                        服务热线：13859128186<br>
-                        <span class="contact-note">周一至周日 9:00-18:00</span>
+                        <a href="tel:13859128186" class="clickable-link">服务热线：13859128186</a>
+                        <span class="contact-note">周一至周日 9:00-18:00 (点击号码直接拨打)</span>
                     </div>
                 </div>
+
+                <!-- 邮箱：mailto:链接 -->
                 <div class="contact-row">
                     <div class="contact-icon">✉️</div>
                     <div class="contact-text">
-                        zws8@139.com<br>
-                        <span class="contact-note">合作/咨询专属邮箱</span>
+                        <a href="mailto:zws8@139.com" class="clickable-link">zws8@139.com</a>
+                        <span class="contact-note">合作/咨询专属邮箱 (点击直接写信)</span>
                     </div>
                 </div>
+
+                <!-- 微信号 + 一键复制按钮 -->
                 <div class="contact-row">
                     <div class="contact-icon">💬</div>
                     <div class="contact-text">
-                        微信咨询：zws6669<br>
+                        <span>微信咨询：<strong>zws6669</strong></span>
+                        <button class="copy-btn" id="copyWxBtn">复制微信号</button>
                         <span class="contact-note">长按下方二维码 加微信咨询（全球业务）</span>
                         <div class="wx-qrcode">
-                            <!-- 微信二维码图片：1.jpg OSS -->
                             <img src="https://zws8-website-images.oss-cn-hongkong.aliyuncs.com/1.jpg" alt="微信二维码">
                             <div class="wx-desc">扫码添加｜获取全球供货方案</div>
                         </div>
                     </div>
                 </div>
+
+                <!-- 地图补充讲解：同时提供一个地图占位符链接 -->
                 <div class="map-placeholder">
-                    🗺️ 高德地图 | 福建省三明市沙县区凤岗镇西霞村110号
+                    <a href="https://uri.amap.com/marker?position=117.826,26.396&name=财盛生活服务科技" 
+                       target="_blank" 
+                       class="map-link" 
+                       style="background:#d4af7a; color:white; border:none;">
+                       🗺️ 打开高德地图查看详细位置 & 导航
+                    </a>
                 </div>
             </div>
         </div>
@@ -787,7 +843,7 @@
 </main>
 
 <footer>
-    © 2026 财盛生活服务科技有限公司  |  致力企业数字化升级 · 沙县美食全球共享  |  诚信经营 一件代发 跨境可寄
+    © 2026 财盛生活服务科技有限公司  |  致力企业数字化升级 · 沙县美食全球共享  |  诚信经营  跨境可寄
 </footer>
 
 <!-- 底部导航栏 -->
@@ -804,7 +860,7 @@
 
 <script>
     (function() {
-        // 轮播逻辑（完全保留原有交互）
+        // 轮播逻辑（不变）
         const swiperWrapper = document.getElementById('swiperWrapper');
         const slides = document.querySelectorAll('.swiper-slide');
         const prevBtn = document.getElementById('prevBtn');
@@ -885,7 +941,7 @@
                 moveX = 0;
                 resetAutoPlay();
             });
-            // 鼠标拖动支持
+            // 鼠标拖动支持 (桌面)
             sliderContainer.addEventListener('mousedown', (e) => {
                 e.preventDefault();
                 startX = e.clientX;
@@ -931,7 +987,20 @@
         }
         initSwiper();
 
-        // 底部导航高亮及滚动（加入globalFood）
+        // 复制微信号功能
+        const copyBtn = document.getElementById('copyWxBtn');
+        if (copyBtn) {
+            copyBtn.addEventListener('click', function() {
+                const wx = 'zws6669';
+                navigator.clipboard.writeText(wx).then(() => {
+                    alert('微信号 ' + wx + ' 已复制，可粘贴到微信添加好友');
+                }).catch(() => {
+                    alert('复制失败，请手动复制微信号：' + wx);
+                });
+            });
+        }
+
+        // 底部导航高亮及滚动
         const navItems = document.querySelectorAll('.nav-item');
         const sections = {
             home: document.getElementById('home'),
