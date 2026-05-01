@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>财盛生活服务 | 数字化综合服务商 · 沙县美食全球配送</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f5f7fb;
+            color: #1e2a3e;
+            line-height: 1.5;
+            padding-bottom: 80px;
+            scroll-behavior: smooth;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .brand-header {
+            background-color: #ffffff;
+            padding: 20px 24px 12px;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.02);
+        }
+        .brand-name {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            background: linear-gradient(135deg, #1a2a3a, #2c3e4e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .brand-tagline {
+            font-size: 0.8rem;
+            color: #6c7a89;
+            margin-top: 6px;
+            font-weight: 400;
+        }
+        .brand-badges {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+        .badge {
+            background: #f0f4fa;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        section {
+            margin: 28px 0 32px;
+        }
+        .section-card {
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.01);
+            padding: 28px 24px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .section-title {
+            font-size: 1.7rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 40%;
+            height: 3px;
+            background: #d4af7a;
+            margin-top: 8px;
+            border-radius: 4px;
+        }
+
+        .hero-swiper {
+            background: transparent;
+            box-shadow: none;
+            padding: 0;
+            border-radius: 0;
+            overflow: hidden;
+        }
+        .swiper-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2);
+            background: #f0f2f5;
+        }
+        .swiper-wrapper {
+            display: flex;
+            transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            will-change: transform;
+        }
+        .swiper-slide {
+            flex-shrink: 0;
+            width: 100%;
+        }
+        .swiper-slide img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            display: block;
+            pointer-events: none;
+        }
+        .swiper-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: #cbd5e1;
+            border-radius: 50%;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .dot.active {
+            width: 24px;
+            background: #d4af7a;
+            border-radius: 10px;
+        }
+        .swiper-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(6px);
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #1e2a3e;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: background 0.2s;
+        }
+        .swiper-btn-prev { left: 12px; }
+        .swiper-btn-next { right: 12px; }
+
+        .about-text {
+            font-size: 1rem;
+            color: #2c3e50;
+            line-height: 1.65;
+            margin-bottom: 16px;
+        }
+        .about-highlight {
+            background: #f8fafd;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px 0 12px;
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            flex: 1;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #d4af7a;
+            line-height: 1.2;
+        }
+        .stat-label {
+            font-size: 0.75rem;
+            color: #5b6e8c;
+            margin-top: 6px;
+        }
+        .about-sign {
+            font-size: 0.85rem;
+            color: #8d9aaf;
+            border-left: 3px solid #d4af7a;
+            padding-left: 14px;
+            margin-top: 18px;
+        }
+
+        .services-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .service-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            background: #f9fafc;
+            border-radius: 20px;
+            padding: 16px 18px;
+            transition: all 0.2s;
+            border: 1px solid #edf2f7;
+        }
+        .service-icon {
+            width: 54px;
+            height: 54px;
+            background: #ffffff;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.05);
+            color: #d4af7a;
+        }
+        .service-info h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .service-info p {
+            font-size: 0.85rem;
+            color: #5b6e8c;
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-top: 12px;
+        }
+        .advantage-card {
+            background: #f9fafc;
+            border-radius: 24px;
+            padding: 20px 12px;
+            text-align: center;
+            transition: all 0.2s;
+            border: 1px solid #eff3f8;
+        }
+        .advantage-icon {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+        }
+        .advantage-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .advantage-card p {
+            font-size: 0.75rem;
+            color: #6f7d98;
+            line-height: 1.4;
+        }
+
+        /* 新增全球美食特色板块样式 */
+        .global-food-card {
+            background: linear-gradient(115deg, #fffaf3 0%, #ffffff 100%);
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+            border: 1px solid #faeac9;
+        }
+        .food-highlight {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .food-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #c47d2e;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .food-desc {
+            font-size: 0.95rem;
+            color: #3e2a1f;
+            line-height: 1.55;
+        }
+        .food-badge-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 8px 0 4px;
+        }
+        .food-badge {
+            background: #fef3e4;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #b45f1b;
+        }
+        .food-action {
+            margin-top: 8px;
+            background: #f7f1e8;
+            border-radius: 20px;
+            padding: 12px 16px;
+            display: inline-block;
+            width: auto;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #a65311;
+        }
+
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .case-item {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .case-item img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .case-item:hover img {
+            transform: scale(1.02);
+        }
+        .case-info {
+            padding: 12px 12px 16px;
+        }
+        .case-info h4 {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+        .case-info p {
+            font-size: 0.75rem;
+            color: #7c8ba0;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .contact-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 1rem;
+        }
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: #f0f4f9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #d4af7a;
+        }
+        .contact-text {
+            flex: 1;
+            font-weight: 500;
+            color: #1f2c3e;
+            word-break: break-all;
+        }
+        .contact-note {
+            margin-top: 8px;
+            font-size: 0.8rem;
+            color: #7b8ba3;
+        }
+        .wx-qrcode {
+            text-align: center;
+            margin-top: 12px;
+        }
+        .wx-qrcode img {
+            width: 140px;
+            height: 140px;
+            border-radius: 16px;
+            border: 1px solid #eef2f8;
+            background: #fff;
+            padding: 6px;
+            object-fit: contain;
+        }
+        .wx-desc {
+            font-size: 0.75rem;
+            color: #8d9aaf;
+            margin-top: 6px;
+        }
+        .map-placeholder {
+            margin-top: 16px;
+            background: #eef2f6;
+            border-radius: 24px;
+            padding: 16px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #5a6e8a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: 1px solid #e2eaf2;
+        }
+
+        .official-url-card {
+            background: linear-gradient(135deg, #fef9e8 0%, #fff6e5 100%);
+            border-radius: 20px;
+            padding: 18px 20px;
+            margin: 16px 0 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            border: 1px solid #f3e3c2;
+        }
+        .url-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            color: #b8860b;
+        }
+        .url-label span {
+            font-size: 1.2rem;
+        }
+        .url-link {
+            background: #ffffff;
+            padding: 8px 16px;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #2c3e4e;
+            text-decoration: none;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+            word-break: break-all;
+            display: inline-block;
+            border: 1px solid #ffe1b3;
+        }
+        .url-link:hover {
+            background: #d4af7a;
+            color: white;
+            border-color: #d4af7a;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
+            padding: 8px 16px 12px;
+            z-index: 1000;
+        }
+        .nav-items {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.7rem;
+            color: #8a99b0;
+            transition: color 0.2s;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-weight: 500;
+        }
+        .nav-item span:first-child {
+            font-size: 1.3rem;
+            font-weight: normal;
+        }
+        .nav-item.active {
+            color: #d4af7a;
+        }
+        .nav-item:active {
+            transform: scale(0.96);
+        }
+
+        footer {
+            text-align: center;
+            padding: 24px 20px 16px;
+            font-size: 0.7rem;
+            color: #95a5b9;
+            border-top: 1px solid #ecf3fa;
+            margin-top: 20px;
+        }
+        @media (max-width: 480px) {
+            .section-card { padding: 24px 20px; }
+            .section-title { font-size: 1.5rem; }
+            .cases-grid { gap: 14px; }
+            .advantages-grid { gap: 12px; }
+            .official-url-card { flex-direction: column; align-items: flex-start; }
+        }
+        #contact, #about, #services, #cases, #home, #globalFood { scroll-margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="brand-header">
+    <div class="brand-name">财盛生活服务科技有限公司</div>
+    <div class="brand-tagline">数字化综合服务商 · 沙县美食全球直供</div>
+    <div class="brand-badges">
+        <span class="badge">微信小程序开发</span>
+        <span class="badge">AI数据标注</span>
+        <span class="badge">软件定制</span>
+        <span class="badge">食品线上销售</span>
+        <span class="badge">🌍 全球一件代发</span>
+    </div>
+</div>
+
+<main class="container">
+    <!-- 轮播区域 -->
+    <section id="home">
+        <div class="hero-swiper">
+            <div class="swiper-container" id="mainSwiper">
+                <div class="swiper-wrapper" id="swiperWrapper">
+                    <div class="swiper-slide"><img src="https://picsum.photos/id/104/800/600" alt="数字化办公"></div>
+                    <div class="swiper-slide"><img src="https://picsum.photos/id/106/800/600" alt="技术开发团队"></div>
+                    <div class="swiper-slide"><img src="https://picsum.photos/id/20/800/600" alt="AI数据服务"></div>
+                </div>
+                <div class="swiper-btn swiper-btn-prev" id="prevBtn">‹</div>
+                <div class="swiper-btn swiper-btn-next" id="nextBtn">›</div>
+            </div>
+            <div class="swiper-dots" id="dotsContainer"></div>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section id="about">
+        <div class="section-card">
+            <h2 class="section-title">关于我们</h2>
+            <div class="about-text">
+                财盛生活服务科技是一家集<span style="font-weight: 600;">微信小程序定制开发、AI数据标注与数字服务、软件系统定制、线上食品合规销售</span>为一体的高新技术企业。我们深耕企业数字化升级领域，为零售、餐饮、教育、农业等多行业提供从技术开发到运营支持的一站式解决方案。
+            </div>
+            <div class="about-text">
+                公司拥有专业技术团队与资深项目顾问，秉承“诚信经营、靠谱交付”的理念，已为全国300+企业客户完成数字化转型落地。同时具备正规食品经营许可资质，赋能线上电商新零售。
+            </div>
+            <div class="about-highlight">
+                <div class="stat-item">
+                    <div class="stat-number">300+</div>
+                    <div class="stat-label">合作企业</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">客户满意度</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24h</div>
+                    <div class="stat-label">售后响应</div>
+                </div>
+            </div>
+            <div class="about-sign">—— 专业始于细节 · 信任源于长久</div>
+        </div>
+    </section>
+
+    <!-- 服务项目 -->
+    <section id="services">
+        <div class="section-card">
+            <h2 class="section-title">服务项目</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">📱</div>
+                    <div class="service-info">
+                        <h4>微信小程序开发</h4>
+                        <p>商城、点餐、预约、企业展示，全场景定制开发</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🤖</div>
+                    <div class="service-info">
+                        <h4>AI数据标注服务</h4>
+                        <p>图像、语音、文本标注，高质量数据集构建</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">💻</div>
+                    <div class="service-info">
+                        <h4>软件系统定制开发</h4>
+                        <p>ERP、CRM、OA等企业管理软件全流程开发</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🍜</div>
+                    <div class="service-info">
+                        <h4>线上食品网络销售 · 全球配送</h4>
+                        <p>沙县拌面、干面等特产，正规资质，一件代发，跨境直达</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🔧</div>
+                    <div class="service-info">
+                        <h4>企业数字化陪跑</h4>
+                        <p>技术顾问+运维支持，让数字化真正落地</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心优势 -->
+    <section>
+        <div class="section-card">
+            <h2 class="section-title">核心优势</h2>
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <div class="advantage-icon">⚡</div>
+                    <h4>资深技术团队</h4>
+                    <p>10年以上经验工程师，主流技术栈全覆盖</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">✅</div>
+                    <h4>正规经营资质</h4>
+                    <p>食品经营许可、软件企业认证，安全合规</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">🔄</div>
+                    <h4>全流程服务</h4>
+                    <p>需求分析→设计开发→测试上线→运维迭代</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">🤝</div>
+                    <h4>长期合作伙伴</h4>
+                    <p>专注长期价值，提供二次开发与售后保障</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========= 新增：正宗沙县 · 全球共享 板块（完整文案） ========= -->
+    <section id="globalFood">
+        <div class="global-food-card section-card">
+            <div class="food-highlight">
+                <div class="food-title">
+                    <span>🍜</span> 沙县拌面 · 干面 · 地道家乡味
+                </div>
+                <div class="food-desc">
+                    沙县拌面、沙县干面等特色地方美食，支持<strong>全球发货，海外可配送</strong>。我们拥有正规食品销售资质与成熟物流体系，让海外华人、各国客户都能轻松品尝正宗沙县风味。
+                </div>
+                <div class="food-badge-group">
+                    <span class="food-badge">🌏 全球一件代发</span>
+                    <span class="food-badge">✈️ 跨境可寄 · 多国直达</span>
+                    <span class="food-badge">📦 成熟物流体系</span>
+                    <span class="food-badge">🧾 正规食品经营许可</span>
+                </div>
+                <div class="food-desc">
+                    面向全球市场，<strong>一件代发，跨境可寄</strong>，助力地方特色美食走向世界。无论是海外商超、华人社区，还是个人零售，我们都可提供稳定供货与专业跨境食品出口服务。
+                </div>
+                <div class="food-action">
+                    💬 微信咨询 zws8888 ｜ 获取全球供货报价
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品案例（保留原有 OSS 图片） -->
+    <section id="cases">
+        <div class="section-card">
+            <h2 class="section-title">产品案例</h2>
+            <div class="cases-grid">
+                <div class="case-item">
+                    <img src="https://picsum.photos/id/30/400/400" alt="轻奢烘焙小程序">
+                    <div class="case-info">
+                        <h4>轻奢烘焙品牌小程序</h4>
+                        <p>会员+外卖+积分，日活提高45%</p>
+                    </div>
+                </div>
+                <!-- AI数据标注图片：3.jpg（OSS） -->
+                <div class="case-item">
+                    <img src="https://zws8-website-images.oss-cn-hongkong.aliyuncs.com/3.jpg" alt="AI数据标注项目成果">
+                    <div class="case-info">
+                        <h4>自动驾驶数据标注项目</h4>
+                        <p>百万级图像标注，精准率99.2%</p>
+                    </div>
+                </div>
+                <div class="case-item">
+                    <img src="https://picsum.photos/id/168/400/400" alt="企业ERP系统">
+                    <div class="case-info">
+                        <h4>制造企业ERP定制</h4>
+                        <p>生产进销存一体化，降本30%</p>
+                    </div>
+                </div>
+                <!-- 拌面图片：2.jpg（OSS） 突出美食案例 -->
+                <div class="case-item">
+                    <img src="https://zws8-website-images.oss-cn-hongkong.aliyuncs.com/2.jpg" alt="沙县拌面全球供货案例">
+                    <div class="case-info">
+                        <h4>沙县拌面 · 跨境全球购</h4>
+                        <p>正宗沙县干面，海外一件代发，口碑爆款</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系地址 + 官网链接 + 微信二维码（1.jpg） -->
+    <section id="contact">
+        <div class="section-card">
+            <h2 class="section-title">联系地址</h2>
+            <div class="contact-info">
+                <div class="official-url-card">
+                    <div class="url-label">
+                        <span>🌐</span> 官方网站
+                    </div>
+                    <a href="https://www.caishengservice.com" target="_blank" rel="noopener noreferrer" class="url-link">
+                        www.zws8.com
+                    </a>
+                    <div style="font-size:0.7rem; color:#b87333; margin-left: auto;">点击直接访问 →</div>
+                </div>
+                
+                <div class="contact-row">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-text">
+                        福建省三明市沙县区凤岗镇西霞村110号<br>
+                        <span class="contact-note">(来访请提前预约)</span>
+                    </div>
+                </div>
+                <div class="contact-row">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-text">
+                        服务热线：13859128186<br>
+                        <span class="contact-note">周一至周日 9:00-18:00</span>
+                    </div>
+                </div>
+                <div class="contact-row">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-text">
+                        zws8@139.com<br>
+                        <span class="contact-note">合作/咨询专属邮箱</span>
+                    </div>
+                </div>
+                <div class="contact-row">
+                    <div class="contact-icon">💬</div>
+                    <div class="contact-text">
+                        微信咨询：zws6669<br>
+                        <span class="contact-note">长按下方二维码 加微信咨询（全球业务）</span>
+                        <div class="wx-qrcode">
+                            <!-- 微信二维码图片：1.jpg OSS -->
+                            <img src="https://zws8-website-images.oss-cn-hongkong.aliyuncs.com/1.jpg" alt="微信二维码">
+                            <div class="wx-desc">扫码添加｜获取全球供货方案</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-placeholder">
+                    🗺️ 高德地图 | 福建省三明市沙县区凤岗镇西霞村110号
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    © 2026 财盛生活服务科技有限公司  |  致力企业数字化升级 · 沙县美食全球共享  |  诚信经营 一件代发 跨境可寄
+</footer>
+
+<!-- 底部导航栏 -->
+<div class="bottom-nav">
+    <div class="nav-items">
+        <button class="nav-item" data-section="home">🏠<span>首页</span></button>
+        <button class="nav-item" data-section="about">✨<span>关于</span></button>
+        <button class="nav-item" data-section="services">⚙️<span>服务</span></button>
+        <button class="nav-item" data-section="globalFood">🍜<span>沙县美食</span></button>
+        <button class="nav-item" data-section="cases">🖼️<span>案例</span></button>
+        <button class="nav-item" data-section="contact">📞<span>联系</span></button>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // 轮播逻辑（完全保留原有交互）
+        const swiperWrapper = document.getElementById('swiperWrapper');
+        const slides = document.querySelectorAll('.swiper-slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const dotsContainer = document.getElementById('dotsContainer');
+        let currentIndex = 0;
+        let slideCount = slides.length;
+        let autoTimer = null;
+        let startX = 0, moveX = 0, isDragging = false;
+        let dragThreshold = 30;
+
+        function renderDots() {
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < slideCount; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (i === currentIndex) dot.classList.add('active');
+                dot.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    goToSlide(i);
+                    resetAutoPlay();
+                });
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function updateDots() {
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, idx) => {
+                if (idx === currentIndex) dot.classList.add('active');
+                else dot.classList.remove('active');
+            });
+        }
+
+        function goToSlide(index) {
+            if (index < 0) index = 0;
+            if (index >= slideCount) index = slideCount - 1;
+            currentIndex = index;
+            const offset = -currentIndex * 100;
+            swiperWrapper.style.transform = `translateX(${offset}%)`;
+            updateDots();
+        }
+
+        function nextSlide() { goToSlide((currentIndex + 1) % slideCount); }
+        function prevSlide() { goToSlide((currentIndex - 1 + slideCount) % slideCount); }
+
+        function startAutoPlay() {
+            if (autoTimer) clearInterval(autoTimer);
+            autoTimer = setInterval(() => nextSlide(), 4000);
+        }
+        function resetAutoPlay() { startAutoPlay(); }
+        function stopAutoPlay() { if (autoTimer) { clearInterval(autoTimer); autoTimer = null; } }
+
+        const sliderContainer = document.querySelector('.swiper-container');
+        if (sliderContainer) {
+            sliderContainer.addEventListener('touchstart', (e) => {
+                stopAutoPlay();
+                startX = e.touches[0].clientX;
+                isDragging = true;
+                swiperWrapper.style.transition = 'none';
+            }, { passive: false });
+            sliderContainer.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                const move = e.touches[0].clientX - startX;
+                moveX = move;
+                const percent = -currentIndex * 100 + (move / sliderContainer.offsetWidth) * 100;
+                swiperWrapper.style.transform = `translateX(${percent}%)`;
+            }, { passive: false });
+            sliderContainer.addEventListener('touchend', () => {
+                if (!isDragging) { swiperWrapper.style.transition = ''; return; }
+                isDragging = false;
+                swiperWrapper.style.transition = 'transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
+                if (Math.abs(moveX) > dragThreshold) {
+                    moveX > 0 ? prevSlide() : nextSlide();
+                } else {
+                    goToSlide(currentIndex);
+                }
+                moveX = 0;
+                resetAutoPlay();
+            });
+            // 鼠标拖动支持
+            sliderContainer.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+                startX = e.clientX;
+                isDragging = true;
+                stopAutoPlay();
+                swiperWrapper.style.transition = 'none';
+                const onMouseMove = (moveEvent) => {
+                    if (!isDragging) return;
+                    const moveDelta = moveEvent.clientX - startX;
+                    moveX = moveDelta;
+                    const percent = -currentIndex * 100 + (moveDelta / sliderContainer.offsetWidth) * 100;
+                    swiperWrapper.style.transform = `translateX(${percent}%)`;
+                };
+                const onMouseUp = () => {
+                    isDragging = false;
+                    swiperWrapper.style.transition = 'transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
+                    if (Math.abs(moveX) > dragThreshold) {
+                        moveX > 0 ? prevSlide() : nextSlide();
+                    } else {
+                        goToSlide(currentIndex);
+                    }
+                    moveX = 0;
+                    resetAutoPlay();
+                    document.removeEventListener('mousemove', onMouseMove);
+                    document.removeEventListener('mouseup', onMouseUp);
+                };
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', onMouseUp);
+            });
+        }
+        if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prevSlide(); resetAutoPlay(); });
+        if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); nextSlide(); resetAutoPlay(); });
+
+        function initSwiper() {
+            if (slideCount === 0) return;
+            renderDots();
+            goToSlide(0);
+            startAutoPlay();
+            if (sliderContainer) {
+                sliderContainer.addEventListener('mouseenter', stopAutoPlay);
+                sliderContainer.addEventListener('mouseleave', startAutoPlay);
+            }
+        }
+        initSwiper();
+
+        // 底部导航高亮及滚动（加入globalFood）
+        const navItems = document.querySelectorAll('.nav-item');
+        const sections = {
+            home: document.getElementById('home'),
+            about: document.getElementById('about'),
+            services: document.getElementById('services'),
+            globalFood: document.getElementById('globalFood'),
+            cases: document.getElementById('cases'),
+            contact: document.getElementById('contact')
+        };
+
+        function setActiveNav(sectionId) {
+            navItems.forEach(item => {
+                const target = item.getAttribute('data-section');
+                if (target === sectionId) item.classList.add('active');
+                else item.classList.remove('active');
+            });
+        }
+
+        function scrollToSection(sectionId) {
+            const element = sections[sectionId];
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                setActiveNav(sectionId);
+            }
+        }
+
+        function handleScrollHighlight() {
+            const scrollPos = window.scrollY + 120;
+            let active = 'home';
+            for (const [key, sec] of Object.entries(sections)) {
+                if (sec) {
+                    const top = sec.offsetTop;
+                    const bottom = top + sec.offsetHeight;
+                    if (scrollPos >= top && scrollPos < bottom) { active = key; break; }
+                }
+            }
+            setActiveNav(active);
+        }
+
+        window.addEventListener('scroll', handleScrollHighlight);
+        window.addEventListener('load', () => handleScrollHighlight());
+        handleScrollHighlight();
+
+        navItems.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = btn.getAttribute('data-section');
+                if (target && sections[target]) scrollToSection(target);
+            });
+        });
+
+        window.addEventListener('resize', () => goToSlide(currentIndex));
+        setTimeout(() => goToSlide(currentIndex), 100);
+    })();
+</script>
+</body>
+</html>
